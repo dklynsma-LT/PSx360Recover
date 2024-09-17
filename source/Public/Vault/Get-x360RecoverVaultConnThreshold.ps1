@@ -9,7 +9,7 @@ function Get-x360RecoverVaultConnThreshold {
 	Param(
 		# Return infomation about a single vault
 		[Parameter(Mandatory, Position = 0, ValueFromPipeline, ValueFromPipelineByPropertyName)]
-		[Alias('vault_id')]
+		[Alias('vault_id','id')]
 		[Int]$vaultId
 	)
 	begin {
@@ -21,7 +21,7 @@ function Get-x360RecoverVaultConnThreshold {
 	process {
 		try {
 			if ($vaultId) {
-				Write-Verbose ('Getting vault with id {0}.' -f $vaultId)
+				Write-Verbose ('Getting connectivity threshold for vault with id {0}.' -f $vaultId)
 				$Resource = ('vault/{0}/threshold/connectivity' -f $vaultId)
 				$RequestParams = @{
 					Resource = $Resource
@@ -29,12 +29,12 @@ function Get-x360RecoverVaultConnThreshold {
 				}
 			}
 			try {
-				$vaultResults = New-x360RecoverGETRequest @RequestParams
-				return $vaultResults
+				$gResults = New-x360RecoverGETRequest @RequestParams
+				return $gResults
 			} catch {
-				if (-not $vaultResults) {
+				if (-not $gResults) {
 					if ($vaultId) {
-						throw ('Vault with id {0} not found.' -f $organisationId)
+						throw ('Vault with id {0} not found.' -f $vaultId)
 					} else {
 						throw 'No vaults found.'
 					}
