@@ -11,9 +11,6 @@ function Connect-x360Recover {
 		[Parameter( ParameterSetName = 'Secret Vault Write' )]
 		[ValidateSet('prod', 'mock')]
 		[string]$Instance,
-
-		[Parameter(ParameterSetName = 'Default Auth')]
-		[switch]$ReturnErrors,
 		# Use the SecretManagement module to store and retrieve the API key.
 		[Parameter(ParameterSetName = 'Default Auth')]
 		[Parameter(ParameterSetName = 'Secret Vault Write')]

@@ -17,6 +17,7 @@
     Pester                      = 'latest'
     ModuleBuilder               = 'latest'
 	#Metadata 				  	= 'latest'
+	platyPS 				  	= 'latest'
     ChangelogManagement         = 'latest'
     Sampler                     = 'latest'
     'Sampler.GitHubTasks'       = 'latest'

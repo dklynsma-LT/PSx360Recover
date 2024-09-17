@@ -49,6 +49,7 @@ BuildWorkflow:
     - Build_Module_ModuleBuilder
     - Build_NestedModules_ModuleBuilder
     - Create_changelog_release_output
+    - RebuildDocs
 
 
   pack:
@@ -101,7 +102,7 @@ Pester:
   #  - TestQuality
   Tag:
   CodeCoverageThreshold: 0 # Set to 0 to bypass
-  #CodeCoverageOutputFile: JaCoCo_$OsShortName.xml
+  CodeCoverageOutputFile: codecoverage.xml
   #CodeCoverageOutputFileEncoding: ascii
   # Use this if code coverage should be merged from several pipeline test jobs.
   # Any existing keys above should be replaced. See also CodeCoverage below.
