@@ -2,11 +2,9 @@ function Get-x360RecoverVault {
 	[CmdletBinding( DefaultParameterSetName = 'Multi' )]
 	[OutputType([Object])]
 	[MetadataAttribute(
-		'/x360recover/vault',
+		'/vault',
 		'get',
-		'/x360recover/vault/{vault_id}',
-		'get',
-		'/x360recover/vault/{vault_id}/threshold/connectivity',
+		'/vault/{vault_id}',
 		'get'
 	)]
 	[Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSReviewUnusedParameter', '', Justification = 'Uses dynamic parameter parsing.')]
@@ -45,14 +43,14 @@ function Get-x360RecoverVault {
 		try {
 			if ($vaultId) {
 				Write-Verbose ('Getting vault with id {0}.' -f $vaultId)
-				$Resource = ('/x360recover/vault/{0}' -f $vaultId)
+				$Resource = ('vault/{0}' -f $vaultId)
 				$RequestParams = @{
 					Resource = $Resource
 					QSCollection = $QSCollection
 				}
 			} else {
 				Write-Verbose 'Retreiving all vaults'
-				$Resource = '/x360recover/vault'
+				$Resource = 'vault'
 				$RequestParams = @{
 					Resource = $Resource
 					QSCollection = $QSCollection

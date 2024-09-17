@@ -27,7 +27,12 @@ function New-x360RecoverGETRequest {
 		}
 		Write-Verbose "URI is $($Script:x360RConnectionInformation.URL)"
 		$RequestUri = [System.UriBuilder]"$($Script:x360RConnectionInformation.URL)"
-		$RequestUri.Path = $Resource
+		if ($RequestUri.Path) {
+			$RequestUri.Path = Join-Path $RequestUri.Path $Resource
+		} else {
+			$RequestUri.Path = $Resource
+		}
+
 		if ($QueryStringCollection) {
 			$RequestUri.Query = $QueryStringCollection.toString()
 		} else {
