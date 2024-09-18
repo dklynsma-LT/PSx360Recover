@@ -5,23 +5,17 @@ online version:
 schema: 2.0.0
 ---
 
-# Get-x360RecoverBackupJob
+# Get-x360RecoverBackupJobHistory
 
 ## SYNOPSIS
 {{ Fill in the Synopsis }}
 
 ## SYNTAX
 
-### Single
 ```
-Get-x360RecoverBackupJob [-clientId] <Int64> [-deviceId] <Int64> [-jobId] <Int64>
+Get-x360RecoverBackupJobHistory [-clientId] <Int64> [-deviceId] <Int64> [-jobId] <Int64> [[-limit] <Int64>]
+ [[-offset] <Int64>] [[-jobStartTimeUnixEpoch] <Int64>] [[-jobStartTime] <DateTime>]
  [-ProgressAction <ActionPreference>] [<CommonParameters>]
-```
-
-### Multi
-```
-Get-x360RecoverBackupJob [-clientId] <Int64> [-deviceId] <Int64> [-ProgressAction <ActionPreference>]
- [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -73,13 +67,73 @@ Accept wildcard characters: False
 
 ```yaml
 Type: Int64
-Parameter Sets: Single
+Parameter Sets: (All)
 Aliases: job_id
 
 Required: True
 Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -jobStartTime
+{{ Fill jobStartTime Description }}
+
+```yaml
+Type: DateTime
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 5
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -jobStartTimeUnixEpoch
+{{ Fill jobStartTimeUnixEpoch Description }}
+
+```yaml
+Type: Int64
+Parameter Sets: (All)
+Aliases: starttime_begin, startTimeBegin
+
+Required: False
+Position: 5
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -limit
+{{ Fill limit Description }}
+
+```yaml
+Type: Int64
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 3
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -offset
+{{ Fill offset Description }}
+
+```yaml
+Type: Int64
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 4
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

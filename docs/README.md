@@ -10,7 +10,12 @@ Connect-x360Recover -VaultName <string> -WriteToSecretVault [-ApiKey <string>] [
 Connect-x360Recover -VaultName <string> [-UseSecretManagement] [-WriteToSecretVault] [-ReadFromSecretVault] [-SecretPrefix <string>] [<CommonParameters>]
  |
 | [Get-x360RecoverBackupJob](./docs/Get-x360RecoverBackupJob.md) | 
-Get-x360RecoverBackupJob [-clientId] <long> [-deviceId] <string> [<CommonParameters>]
+Get-x360RecoverBackupJob [-clientId] <long> [-deviceId] <long> [-jobId] <long> [<CommonParameters>]
+
+Get-x360RecoverBackupJob [-clientId] <long> [-deviceId] <long> [<CommonParameters>]
+ |
+| [Get-x360RecoverBackupJobHistory](./docs/Get-x360RecoverBackupJobHistory.md) | 
+Get-x360RecoverBackupJobHistory [-clientId] <long> [-deviceId] <long> [-jobId] <long> [[-limit] <long>] [[-offset] <long>] [[-jobStartTime] <datetime>] [<CommonParameters>]
  |
 | [Get-x360RecoverDevice](./docs/Get-x360RecoverDevice.md) | 
 Get-x360RecoverDevice [[-limit] <long>] [[-offset] <long>] [<CommonParameters>]

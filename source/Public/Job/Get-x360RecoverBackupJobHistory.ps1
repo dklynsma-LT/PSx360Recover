@@ -40,7 +40,7 @@ function Get-x360RecoverBackupJobHistory {
 		$Parameters = (Get-Command -Name $CommandName).Parameters
 		#if the datetime parameter is passed, convert it to unix epoch
 		if ($jobStartTime) {
-			[Int64]$jobStartTimeUnixEpoch = ConvertTo-UnixEposh -DateTime $jobStartTime
+			[Int64]$jobStartTimeUnixEpoch = ConvertTo-UnixEpoch -DateTime $jobStartTime
 			$null = $Parameters.Remove('jobStartTime')
 		}
 		$QSCollection = New-x360RecoverQuery -CommandName $CommandName -Parameters $Parameters
