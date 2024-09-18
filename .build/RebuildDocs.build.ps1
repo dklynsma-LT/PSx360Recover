@@ -1,29 +1,42 @@
-RebuildDocs: {
-	# Import our module
-	$ModuleName = Get-ChildItem -Path '.\Source\*' -Include '*.psd1' -Exclude 'build.psd1' | Select-Object -ExpandProperty BaseName
-    if (Get-Module -Name $ModuleName) {
-        Remove-Module $ModuleName -Force
-    }
-    $ModulePath = Resolve-Path -Path ".\Output\module\$ModuleName" | Sort-Object -Property BaseName | Select-Object -Last 1 -ExpandProperty Path
-    $ManifestPath = Get-ChildItem -Path ('{0}\*\*.psd1' -f $ModulePath) -Exclude 'build.psd1' | Select-Object -ExpandProperty FullName
-    Import-Module $ManifestPath -Verbose:$False
+task RebuildDocs {
+	# a workaround because we can't import platyPS within the same session as the build script without causing a conflict
+	# so all of this - starts a script in a new session and outputs back to the current session
+	$stdOutTempFile = "$env:TEMP\$((New-Guid).Guid)"
+	$stdErrTempFile = "$env:TEMP\$((New-Guid).Guid)"
 
-	# Import platyPS
-	Import-Module platyPS -Force
-
-
-	New-MarkDownHelp -ModuleName $ModuleName -OutputFolder '.\docs' -ExcludeDontShow -Force
-
-	# Create summary page
-	$summaryContent = "## Functions`n`n| Function | Synopsis |`n| --- | --- |`n"
-	$commands = (Get-Module -Name AxcientAPI).ExportedCommands.Keys
-	foreach ($command in $commands) {
-		$cHelpSummary = Get-Help -Name $command -Full | Select-Object -ExpandProperty Synopsis
-		$summaryContent += "| [$command](./docs/$command.md) | $cHelpSummary |`n"
+	try {
+		$startProcessParams = @{
+			FilePath = 'pwsh'
+			ArgumentList = ".\Dev\RebuildDocs.ps1"
+			RedirectStandardOutput = $stdOutTempFile
+			RedirectStandardError = $stdErrTempFile
+			PassThru = $true;
+			Wait = $true;
+			NoNewWindow = $true;
+		}
+		$cmd = Start-Process @startProcessParams
+		$cmdOutput = Get-Content -Path $stdOutTempFile -Raw
+		$cmdError = Get-Content -Path $stdErrTempFile -Raw
+		if ($cmd.ExitCode -ne 0) {
+			if ($cmdError) {
+				throw $cmdError.Trim()
+			}
+			if ($cmdOutput) {
+				throw $cmdOutput.Trim()
+			}
+		} else {
+			if ([string]::IsNullOrEmpty($cmdOutput) -eq $false) {
+				Write-Output -InputObject $cmdOutput
+			}
+		}
+	} catch {
+		throw $_
+	} finally {
+		if (Test-Path -Path $stdOutTempFile) {
+			Remove-Item -Path $stdOutTempFile -Force
+		}
+		if (Test-Path -Path $stdErrTempFile) {
+			Remove-Item -Path $stdErrTempFile -Force
+		}
 	}
-	$summaryContent += "`n#"
-	$summaryContent | Set-Content -Path '.\docs\README.md'
-	$ReadmeContent = [regex]::Replace($ReadmeContent,"## Functions\n\n(?'helpfiles'.*?)\n\n#{1}",$summaryContent,[System.Text.RegularExpressions.RegexOptions]::Singleline)
-
-	$ReadmeContent | Set-Content -Path '.\README.md'
 }
