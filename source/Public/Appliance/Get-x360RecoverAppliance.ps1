@@ -11,7 +11,7 @@ function Get-x360RecoverAppliance {
 	Param(
 		# The ID of the appliance to return
 		[Parameter(Mandatory, ParameterSetName = 'Single', Position = 0, ValueFromPipeline, ValueFromPipelineByPropertyName)]
-		[Alias('appliance_id')]
+		[Alias('appliance_id','id')]
 		[int64]$applianceId,
 		# Unique serial number of the service(4 symbols)
 		[ValidateLength(4,4)]

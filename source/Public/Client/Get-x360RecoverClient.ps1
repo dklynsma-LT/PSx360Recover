@@ -10,11 +10,11 @@ function Get-x360RecoverClient {
 	[Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSReviewUnusedParameter', '', Justification = 'Uses dynamic parameter parsing.')]
 	Param(
 		[Parameter(Mandatory, ParameterSetName = 'Single', Position = 0, ValueFromPipeline, ValueFromPipelineByPropertyName)]
-		[Parameter(Mandatory, ParameterSetName = 'Multi', Position = 0, ValueFromPipeline, ValueFromPipelineByPropertyName)]
-		[Alias('client_id')]
+		[Alias('client_id','id')]
 		[int64]$clientId,
 		# Include short appliance information to response or not
 		[Parameter(ParameterSetName = 'Multi', Position = 1)]
+		[Parameter(ParameterSetName = 'Single', Position = 1)]
 		[Alias('include_appliances')]
 		[nullable[bool]]$includeAppliances
 	)

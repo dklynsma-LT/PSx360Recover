@@ -9,7 +9,7 @@ function Get-x360RecoverApplianceByClient {
 	Param(
 		# The ID of the appliance to return
 		[Parameter(Mandatory, Position = 0, ValueFromPipeline, ValueFromPipelineByPropertyName)]
-		[Alias('client_id')]
+		[Alias('client_id','id')]
 		[int64]$clientId,
 		# Include short appliance information to response or not
 		[Parameter(Position = 1)]

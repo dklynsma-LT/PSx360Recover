@@ -28,10 +28,10 @@ function Get-x360RecoverBackupJobHistory {
 		# unix timestamp of minimum backup start time value
 		[Parameter(Position = 5)]
 		[Alias('starttime_begin','startTimeBegin')]
-		[int64]$jobStartTimeUnixEpoch,
+		[int64]$jobsAfterUnixEpoch,
 		# unix timestamp of minimum backup start time value
 		[Parameter(Position = 5)]
-		[dateTime]$jobStartTime
+		[dateTime]$jobsAfter
 
 	)
 	begin {
@@ -40,8 +40,8 @@ function Get-x360RecoverBackupJobHistory {
 		$Parameters = (Get-Command -Name $CommandName).Parameters
 		#if the datetime parameter is passed, convert it to unix epoch
 		if ($jobStartTime) {
-			[Int64]$jobStartTimeUnixEpoch = ConvertTo-UnixEpoch -DateTime $jobStartTime
-			$null = $Parameters.Remove('jobStartTime')
+			[Int64]$jobsAfterUnixEpoch = ConvertTo-UnixEpoch -DateTime $jobsAfter
+			$null = $Parameters.Remove('jobsAfter')
 		}
 		$QSCollection = New-x360RecoverQuery -CommandName $CommandName -Parameters $Parameters
 	}
