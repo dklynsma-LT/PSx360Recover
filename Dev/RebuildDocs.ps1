@@ -21,6 +21,5 @@ foreach ($command in $commands) {
 }
 $summaryContent += "`n#"
 $summaryContent | Set-Content -Path '.\docs\README.md'
-#$ReadmeContent = [regex]::Replace($ReadmeContent,"## Functions\n\n(?'helpfiles'.*?)\n\n#{1}",$summaryContent,[System.Text.RegularExpressions.RegexOptions]::Singleline)
-
+$ReadmeContent = [regex]::Replace($ReadmeContent,"## Functions\n\n(?'helpfiles'.*?)\n\n#{1}",$summaryContent,[System.Text.RegularExpressions.RegexOptions]::Singleline)
 $ReadmeContent | Set-Content -Path '.\README.md'

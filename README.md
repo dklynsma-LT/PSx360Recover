@@ -15,6 +15,11 @@ PS > Connect-x360Recover -ApiKey 'yourlongkey' -Instance 'prod'
 PS > Get-x360RecoverOrganization
 ```
 
+## Functions
+
+| Function | Synopsis |
+| --- | --- |
+
 ## Output Levels
 
 All commandlets support the `-Verbose` parameter which will output detailed information about what the commandlet is doing. If you want to see this output you can use the `-Verbose` parameter on any commandlet. For example:
@@ -33,3 +38,11 @@ PS > Get-x360RecoverDevice -Verbose
 Documentation on the Axcient x360Recover API is available at https://developer.axcient.com.
 
 Code generated documentation on the commands included in this module can be found in the Docs directory. Work smarter not harder they say. :smirk:
+
+## TODO
+
+1. [ ] Add comment based help to all functions
+2. [ ] Resolve Pester test findings
+3. [ ] Use in live environments for other bugs or usability issues.
+4. [ ] Add -all parameter on get requests to deal with pagination.
+5. [ ] Implement set endpoint
