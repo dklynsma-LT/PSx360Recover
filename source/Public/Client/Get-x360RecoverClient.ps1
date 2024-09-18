@@ -1,24 +1,22 @@
-function Get-x360RecoverDevice {
-	[CmdletBinding( DefaultParameterSetName = 'Multi' )]
+function Get-x360RecoverClient {
+	[CmdletBinding(DefaultParameterSetName = 'Multi')]
 	[OutputType([Object])]
 	[MetadataAttribute(
-		'/device',
+		'/client',
 		'get',
-		'/device/{device_id}',
+		'/client/{client_id}',
 		'get'
 	)]
 	[Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSReviewUnusedParameter', '', Justification = 'Uses dynamic parameter parsing.')]
 	Param(
-		# Return infomation about a single vault
-		[Parameter(ParameterSetName = 'Single', Position = 0, ValueFromPipeline, ValueFromPipelineByPropertyName)]
-		[Alias('device_id','id')]
-		[Int64]$deviceId,
-		# Records limit for pagination
+		[Parameter(Mandatory, ParameterSetName = 'Single', Position = 0, ValueFromPipeline, ValueFromPipelineByPropertyName)]
+		[Parameter(Mandatory, ParameterSetName = 'Multi', Position = 0, ValueFromPipeline, ValueFromPipelineByPropertyName)]
+		[Alias('client_id')]
+		[int64]$clientId,
+		# Include short appliance information to response or not
 		[Parameter(ParameterSetName = 'Multi', Position = 1)]
-		[Int64]$limit,
-		# Records offset for pagination
-		[Parameter(ParameterSetName = 'Multi', Position = 2)]
-		[Int64]$offset
+		[Alias('include_appliances')]
+		[nullable[bool]]$includeAppliances
 	)
 	begin {
 		$CommandName = $MyInvocation.InvocationName
@@ -28,16 +26,16 @@ function Get-x360RecoverDevice {
 	}
 	process {
 		try {
-			if ($deviceId) {
-				Write-Verbose ('Getting device with id {0}.' -f $deviceId)
-				$Resource = ('device/{0}' -f $deviceId)
+			if ($clientId) {
+				Write-Verbose ('Getting client with id {0}.' -f $clientId)
+				$Resource = ('client/{0}' -f $clientId)
 				$RequestParams = @{
 					Resource = $Resource
 					QSCollection = $QSCollection
 				}
 			} else {
-				Write-Verbose 'Retreiving all devices'
-				$Resource = 'device'
+				Write-Verbose 'Retreiving all clients'
+				$Resource = 'client'
 				$RequestParams = @{
 					Resource = $Resource
 					QSCollection = $QSCollection
@@ -48,8 +46,8 @@ function Get-x360RecoverDevice {
 				return $gResults
 			} catch {
 				if (-not $gResults) {
-					if ($deviceId) {
-						throw ('Device with id {0} not found.' -f $deviceId)
+					if ($clientId) {
+						throw ('Client with id {0} not found.' -f $clientId)
 					} else {
 						throw 'No devices found.'
 					}

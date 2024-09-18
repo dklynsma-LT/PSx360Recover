@@ -1,5 +1,5 @@
 function Get-x360RecoverBackupJob {
-	[CmdletBinding()]
+	[CmdletBinding( DefaultParameterSetName = 'Multi' )]
 	[OutputType([Object])]
 	[MetadataAttribute(
 		'/client/{client_id}/device/{device_id}/job',
