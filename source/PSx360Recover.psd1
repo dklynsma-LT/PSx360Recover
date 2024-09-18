@@ -24,16 +24,16 @@ GUID = '34e3f7e5-2f13-4b03-9a20-425791bedb0a'
 Author = 'David Klynsma'
 
 # Company or vendor of this module
-CompanyName = 'David Klynsma'
+CompanyName = 'LinkTech'
 
 # Copyright statement for this module
 Copyright = '(c) David Klynsma. All rights reserved.'
 
 # Description of the functionality provided by this module
-Description = 'A Powershell API wrapper for the x360Recover API'
+Description = 'A PowerShell wrapper for the x360Recover API'
 
 # Minimum version of the PowerShell engine required by this module
-PowerShellVersion = '5.0'
+PowerShellVersion = '5.1'
 
 # Name of the PowerShell host required by this module
 # PowerShellHostName = ''
@@ -54,7 +54,9 @@ PowerShellVersion = '5.0'
 RequiredModules = @()
 
 # Assemblies that must be loaded prior to importing this module
-# RequiredAssemblies = @()
+RequiredAssemblies = @(
+	'./Binaries/MetaDataAttribute.dll'
+)
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()
