@@ -1,22 +1,20 @@
-function Get-x360RecoverClient {
-	[CmdletBinding(DefaultParameterSetName = 'Multi')]
+function Get-x360RecoverApplianceByClient {
+	[CmdletBinding()]
 	[OutputType([Object])]
 	[MetadataAttribute(
-		'/client',
-		'get',
-		'/client/{client_id}',
+		'/client/{client_id}/appliance',
 		'get'
 	)]
 	[Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSReviewUnusedParameter', '', Justification = 'Uses dynamic parameter parsing.')]
 	Param(
-		[Parameter(Mandatory, ParameterSetName = 'Single', Position = 0, ValueFromPipeline, ValueFromPipelineByPropertyName)]
-		[Parameter(Mandatory, ParameterSetName = 'Multi', Position = 0, ValueFromPipeline, ValueFromPipelineByPropertyName)]
+		# The ID of the appliance to return
+		[Parameter(Mandatory, Position = 0, ValueFromPipeline, ValueFromPipelineByPropertyName)]
 		[Alias('client_id')]
 		[int64]$clientId,
 		# Include short appliance information to response or not
-		[Parameter(ParameterSetName = 'Multi', Position = 1)]
-		[Alias('include_appliances')]
-		[nullable[bool]]$includeAppliances
+		[Parameter(Position = 1)]
+		[Alias('include_devices')]
+		[nullable[bool]]$includeDevices
 	)
 	begin {
 		$CommandName = $MyInvocation.InvocationName
@@ -27,15 +25,8 @@ function Get-x360RecoverClient {
 	process {
 		try {
 			if ($clientId) {
-				Write-Verbose ('Getting client with id {0}.' -f $clientId)
-				$Resource = ('client/{0}' -f $clientId)
-				$RequestParams = @{
-					Resource = $Resource
-					QSCollection = $QSCollection
-				}
-			} else {
-				Write-Verbose 'Retreiving all clients'
-				$Resource = 'client'
+				Write-Verbose ('Getting appliance with client id {0}.' -f $clientId)
+				$Resource = ('client/{0}/appliance' -f $clientId)
 				$RequestParams = @{
 					Resource = $Resource
 					QSCollection = $QSCollection
@@ -46,10 +37,10 @@ function Get-x360RecoverClient {
 				return $gResults
 			} catch {
 				if (-not $gResults) {
-					if ($clientId) {
-						throw ('Client with id {0} not found.' -f $clientId)
+					if ($applianceId) {
+						throw ('Appliance with client id {0} not found.' -f $client)
 					} else {
-						throw 'No clients found.'
+						throw 'No appliances found.'
 					}
 				}
 			}

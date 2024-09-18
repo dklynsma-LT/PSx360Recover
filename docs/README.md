@@ -9,13 +9,26 @@ Connect-x360Recover -VaultName <string> -WriteToSecretVault [-ApiKey <string>] [
 
 Connect-x360Recover -VaultName <string> [-UseSecretManagement] [-WriteToSecretVault] [-ReadFromSecretVault] [-SecretPrefix <string>] [<CommonParameters>]
  |
-| [Get-x360RecoverBackupJob](./docs/Get-x360RecoverBackupJob.md) | 
-Get-x360RecoverBackupJob [-clientId] <long> [-deviceId] <long> [-jobId] <long> [<CommonParameters>]
+| [Get-x360RecoverAppliance](./docs/Get-x360RecoverAppliance.md) | 
+Get-x360RecoverAppliance [[-serviceId] <string>] [[-includeDevices] <bool>] [<CommonParameters>]
 
+Get-x360RecoverAppliance [-applianceId] <long> [[-includeDevices] <bool>] [<CommonParameters>]
+ |
+| [Get-x360RecoverApplianceByClient](./docs/Get-x360RecoverApplianceByClient.md) | 
+Get-x360RecoverApplianceByClient [-clientId] <long> [[-includeDevices] <bool>] [<CommonParameters>]
+ |
+| [Get-x360RecoverBackupJob](./docs/Get-x360RecoverBackupJob.md) | 
 Get-x360RecoverBackupJob [-clientId] <long> [-deviceId] <long> [<CommonParameters>]
+
+Get-x360RecoverBackupJob [-clientId] <long> [-deviceId] <long> [-jobId] <long> [<CommonParameters>]
  |
 | [Get-x360RecoverBackupJobHistory](./docs/Get-x360RecoverBackupJobHistory.md) | 
 Get-x360RecoverBackupJobHistory [-clientId] <long> [-deviceId] <long> [-jobId] <long> [[-limit] <long>] [[-offset] <long>] [[-jobStartTime] <datetime>] [<CommonParameters>]
+ |
+| [Get-x360RecoverClient](./docs/Get-x360RecoverClient.md) | 
+Get-x360RecoverClient [-clientId] <long> [[-includeAppliances] <bool>] [<CommonParameters>]
+
+Get-x360RecoverClient [-clientId] <long> [<CommonParameters>]
  |
 | [Get-x360RecoverDevice](./docs/Get-x360RecoverDevice.md) | 
 Get-x360RecoverDevice [[-limit] <long>] [[-offset] <long>] [<CommonParameters>]
@@ -30,6 +43,9 @@ Get-x360RecoverDeviceByClient [-clientId] <long> [[-serviceId] <string>] [[-d2cO
  |
 | [Get-x360RecoverDeviceRestorePoint](./docs/Get-x360RecoverDeviceRestorePoint.md) | 
 Get-x360RecoverDeviceRestorePoint [-deviceId] <long> [<CommonParameters>]
+ |
+| [Get-x360RecoverOrganization](./docs/Get-x360RecoverOrganization.md) | 
+Get-x360RecoverOrganization [<CommonParameters>]
  |
 | [Get-x360RecoverVault](./docs/Get-x360RecoverVault.md) | 
 Get-x360RecoverVault [[-vaultType] <string>] [[-active] <bool>] [[-withUrl] <bool>] [[-limit] <long>] [[-includeDevices] <bool>] [<CommonParameters>]

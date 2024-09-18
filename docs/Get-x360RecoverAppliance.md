@@ -5,7 +5,7 @@ online version:
 schema: 2.0.0
 ---
 
-# Get-x360RecoverBackupJob
+# Get-x360RecoverAppliance
 
 ## SYNOPSIS
 {{ Fill in the Synopsis }}
@@ -14,13 +14,13 @@ schema: 2.0.0
 
 ### Multi (Default)
 ```
-Get-x360RecoverBackupJob [-clientId] <Int64> [-deviceId] <Int64> [-ProgressAction <ActionPreference>]
- [<CommonParameters>]
+Get-x360RecoverAppliance [[-serviceId] <String>] [[-includeDevices] <Boolean>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### Single
 ```
-Get-x360RecoverBackupJob [-clientId] <Int64> [-deviceId] <Int64> [-jobId] <Int64>
+Get-x360RecoverAppliance [-applianceId] <Int64> [[-includeDevices] <Boolean>]
  [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
@@ -38,48 +38,48 @@ PS C:\> {{ Add example code here }}
 
 ## PARAMETERS
 
-### -clientId
-{{ Fill clientId Description }}
-
-```yaml
-Type: Int64
-Parameter Sets: (All)
-Aliases: client_id
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -deviceId
-{{ Fill deviceId Description }}
-
-```yaml
-Type: Int64
-Parameter Sets: (All)
-Aliases: device_id, id
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -jobId
-{{ Fill jobId Description }}
+### -applianceId
+{{ Fill applianceId Description }}
 
 ```yaml
 Type: Int64
 Parameter Sets: Single
-Aliases: job_id
+Aliases: appliance_id
 
 Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName, ByValue)
+Accept wildcard characters: False
+```
+
+### -includeDevices
+{{ Fill includeDevices Description }}
+
+```yaml
+Type: Boolean
+Parameter Sets: (All)
+Aliases: include_devices
+
+Required: False
 Position: 2
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -serviceId
+{{ Fill serviceId Description }}
+
+```yaml
+Type: String
+Parameter Sets: Multi
+Aliases: service_id
+
+Required: False
+Position: 1
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

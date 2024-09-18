@@ -5,7 +5,7 @@ online version:
 schema: 2.0.0
 ---
 
-# Get-x360RecoverBackupJob
+# Get-x360RecoverClient
 
 ## SYNOPSIS
 {{ Fill in the Synopsis }}
@@ -14,14 +14,13 @@ schema: 2.0.0
 
 ### Multi (Default)
 ```
-Get-x360RecoverBackupJob [-clientId] <Int64> [-deviceId] <Int64> [-ProgressAction <ActionPreference>]
+Get-x360RecoverClient [-clientId] <Int64> [[-includeAppliances] <Boolean>] [-ProgressAction <ActionPreference>]
  [<CommonParameters>]
 ```
 
 ### Single
 ```
-Get-x360RecoverBackupJob [-clientId] <Int64> [-deviceId] <Int64> [-jobId] <Int64>
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+Get-x360RecoverClient [-clientId] <Int64> [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -49,37 +48,22 @@ Aliases: client_id
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
 ```
 
-### -deviceId
-{{ Fill deviceId Description }}
+### -includeAppliances
+{{ Fill includeAppliances Description }}
 
 ```yaml
-Type: Int64
-Parameter Sets: (All)
-Aliases: device_id, id
+Type: Boolean
+Parameter Sets: Multi
+Aliases: include_appliances
 
-Required: True
+Required: False
 Position: 1
 Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -jobId
-{{ Fill jobId Description }}
-
-```yaml
-Type: Int64
-Parameter Sets: Single
-Aliases: job_id
-
-Required: True
-Position: 2
-Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
