@@ -1,4 +1,17 @@
 function Get-x360RecoverOrganization {
+<#
+.SYNOPSIS
+    Retrieves organization information from x360Recover.
+
+.DESCRIPTION
+    This cmdlet retrieves organization information from x360Recover using a GET request.
+
+.EXAMPLE
+    PS> Get-x360RecoverOrganization
+
+.NOTES
+
+#>
 	[CmdletBinding()]
 	[OutputType([Object])]
 	[MetadataAttribute(
@@ -6,21 +19,14 @@ function Get-x360RecoverOrganization {
 		'get'
 	)]
 	[Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSReviewUnusedParameter', '', Justification = 'Uses dynamic parameter parsing.')]
-	Param(
-	)
-	begin {
-		$CommandName = $MyInvocation.InvocationName
-		write-verbose $MyInvocation
-		$Parameters = (Get-Command -Name $CommandName).Parameters
-		$QSCollection = New-x360RecoverQuery -CommandName $CommandName -Parameters $Parameters
-	}
+	Param()
+	begin {	}
 	process {
 		try {
 			Write-Verbose 'Retreiving organization information'
 			$Resource = 'organization'
 			$RequestParams = @{
 				Resource = $Resource
-				QSCollection = $QSCollection
 			}
 
 			try {

@@ -14,13 +14,14 @@ schema: 2.0.0
 
 ### Multi (Default)
 ```
-Get-x360RecoverClient [-clientId] <Int64> [[-includeAppliances] <Boolean>] [-ProgressAction <ActionPreference>]
+Get-x360RecoverClient [[-includeAppliances] <Boolean>] [-ProgressAction <ActionPreference>]
  [<CommonParameters>]
 ```
 
 ### Single
 ```
-Get-x360RecoverClient [-clientId] <Int64> [-ProgressAction <ActionPreference>] [<CommonParameters>]
+Get-x360RecoverClient [-clientId] <Int64> [[-includeAppliances] <Boolean>] [-ProgressAction <ActionPreference>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -42,8 +43,8 @@ PS C:\> {{ Add example code here }}
 
 ```yaml
 Type: Int64
-Parameter Sets: (All)
-Aliases: client_id
+Parameter Sets: Single
+Aliases: client_id, id
 
 Required: True
 Position: 0
@@ -57,7 +58,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: Boolean
-Parameter Sets: Multi
+Parameter Sets: (All)
 Aliases: include_appliances
 
 Required: False

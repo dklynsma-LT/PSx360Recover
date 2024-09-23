@@ -23,12 +23,12 @@ Get-x360RecoverBackupJob [-clientId] <long> [-deviceId] <long> [<CommonParameter
 Get-x360RecoverBackupJob [-clientId] <long> [-deviceId] <long> [-jobId] <long> [<CommonParameters>]
  |
 | [Get-x360RecoverBackupJobHistory](./docs/Get-x360RecoverBackupJobHistory.md) | 
-Get-x360RecoverBackupJobHistory [-clientId] <long> [-deviceId] <long> [-jobId] <long> [[-limit] <long>] [[-offset] <long>] [[-jobStartTime] <datetime>] [<CommonParameters>]
+Get-x360RecoverBackupJobHistory [-clientId] <long> [-deviceId] <long> [-jobId] <long> [[-limit] <long>] [[-offset] <long>] [[-jobsAfter] <datetime>] [<CommonParameters>]
  |
 | [Get-x360RecoverClient](./docs/Get-x360RecoverClient.md) | 
-Get-x360RecoverClient [-clientId] <long> [[-includeAppliances] <bool>] [<CommonParameters>]
+Get-x360RecoverClient [[-includeAppliances] <bool>] [<CommonParameters>]
 
-Get-x360RecoverClient [-clientId] <long> [<CommonParameters>]
+Get-x360RecoverClient [-clientId] <long> [[-includeAppliances] <bool>] [<CommonParameters>]
  |
 | [Get-x360RecoverDevice](./docs/Get-x360RecoverDevice.md) | 
 Get-x360RecoverDevice [[-limit] <long>] [[-offset] <long>] [<CommonParameters>]

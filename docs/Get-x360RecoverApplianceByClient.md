@@ -37,7 +37,7 @@ PS C:\> {{ Add example code here }}
 ```yaml
 Type: Int64
 Parameter Sets: (All)
-Aliases: client_id
+Aliases: client_id, id
 
 Required: True
 Position: 0

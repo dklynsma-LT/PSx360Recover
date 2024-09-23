@@ -44,7 +44,7 @@ PS C:\> {{ Add example code here }}
 ```yaml
 Type: Int64
 Parameter Sets: Single
-Aliases: appliance_id
+Aliases: appliance_id, id
 
 Required: True
 Position: 0

@@ -14,7 +14,7 @@ schema: 2.0.0
 
 ```
 Get-x360RecoverBackupJobHistory [-clientId] <Int64> [-deviceId] <Int64> [-jobId] <Int64> [[-limit] <Int64>]
- [[-offset] <Int64>] [[-jobStartTimeUnixEpoch] <Int64>] [[-jobStartTime] <DateTime>]
+ [[-offset] <Int64>] [[-jobsAfterUnixEpoch] <Int64>] [[-jobsAfter] <DateTime>]
  [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
@@ -77,8 +77,8 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -jobStartTime
-{{ Fill jobStartTime Description }}
+### -jobsAfter
+{{ Fill jobsAfter Description }}
 
 ```yaml
 Type: DateTime
@@ -92,8 +92,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -jobStartTimeUnixEpoch
-{{ Fill jobStartTimeUnixEpoch Description }}
+### -jobsAfterUnixEpoch
+{{ Fill jobsAfterUnixEpoch Description }}
 
 ```yaml
 Type: Int64
