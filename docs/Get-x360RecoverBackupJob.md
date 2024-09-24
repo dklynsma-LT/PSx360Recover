@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-x360RecoverBackupJob
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Retrieves backup job information for a specified client and device.
 
 ## SYNTAX
 
@@ -25,21 +25,30 @@ Get-x360RecoverBackupJob [-clientId] <Int64> [-deviceId] <Int64> [-jobId] <Int64
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+This cmdlet retrieves backup job information for a specified client and device from the x360Recover system.
+It can retrieve information for a specific job by ID or for all jobs associated with a client and device.
 
 ## EXAMPLES
 
-### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
+### EXAMPLE 1
+```
+Get-x360RecoverBackupJob -clientId 12345 -deviceId 67890
 ```
 
-{{ Add example description here }}
+Retrieves all backup jobs for the specified client and device.
+
+### EXAMPLE 2
+```
+Get-x360RecoverBackupJob -clientId 12345 -deviceId 67890 -jobId 112233
+```
+
+Retrieves the backup job with the specified job ID for the specified client and device.
 
 ## PARAMETERS
 
 ### -clientId
-{{ Fill clientId Description }}
+The unique ID of the client.
+This parameter is mandatory and can be piped.
 
 ```yaml
 Type: Int64
@@ -47,14 +56,15 @@ Parameter Sets: (All)
 Aliases: client_id
 
 Required: True
-Position: 0
-Default value: None
+Position: 1
+Default value: 0
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
 ### -deviceId
-{{ Fill deviceId Description }}
+The unique ID of the device.
+This parameter is mandatory and can be piped.
 
 ```yaml
 Type: Int64
@@ -62,14 +72,15 @@ Parameter Sets: (All)
 Aliases: device_id, id
 
 Required: True
-Position: 1
-Default value: None
+Position: 2
+Default value: 0
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
 ### -jobId
-{{ Fill jobId Description }}
+The unique ID of the job.
+This parameter is mandatory for the 'Single' parameter set and can be piped.
 
 ```yaml
 Type: Int64
@@ -77,8 +88,8 @@ Parameter Sets: Single
 Aliases: job_id
 
 Required: True
-Position: 2
-Default value: None
+Position: 3
+Default value: 0
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
@@ -103,12 +114,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.Int64
-
+### System.Int64. The client ID, device ID, and job ID can be piped to this cmdlet.
 ## OUTPUTS
 
-### System.Object
-
+### System.Object. The backup job information retrieved from x360Recover.
 ## NOTES
 
 ## RELATED LINKS

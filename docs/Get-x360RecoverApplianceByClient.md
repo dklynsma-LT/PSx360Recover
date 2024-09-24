@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-x360RecoverApplianceByClient
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Retrieves appliance information for a specified client from x360Recover.
 
 ## SYNTAX
 
@@ -18,21 +18,30 @@ Get-x360RecoverApplianceByClient [-clientId] <Int64> [[-includeDevices] <Boolean
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+This cmdlet retrieves appliance information for a specified client from the x360Recover system.
+It can filter appliances based on the client ID and optionally include detailed information.
 
 ## EXAMPLES
 
-### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
+### EXAMPLE 1
+```
+Get-x360RecoverApplianceByClient -clientId 12345
 ```
 
-{{ Add example description here }}
+Retrieves appliance information for the client with ID 12345.
+
+### EXAMPLE 2
+```
+Get-x360RecoverApplianceByClient -clientId 12345 -includeDetails $true
+```
+
+Retrieves detailed appliance information for the client with ID 12345.
 
 ## PARAMETERS
 
 ### -clientId
-{{ Fill clientId Description }}
+The ID of the client to retrieve appliance information for.
+This parameter is mandatory and can be piped.
 
 ```yaml
 Type: Int64
@@ -40,14 +49,14 @@ Parameter Sets: (All)
 Aliases: client_id, id
 
 Required: True
-Position: 0
-Default value: None
+Position: 1
+Default value: 0
 Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
 ```
 
 ### -includeDevices
-{{ Fill includeDevices Description }}
+Include short appliance information to response or not
 
 ```yaml
 Type: Boolean
@@ -55,7 +64,7 @@ Parameter Sets: (All)
 Aliases: include_devices
 
 Required: False
-Position: 1
+Position: 2
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -81,12 +90,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.Int64
-
+### System.Int64. The client ID can be piped to this cmdlet.
 ## OUTPUTS
 
-### System.Object
-
+### System.Object. The appliance information retrieved from x360Recover.
 ## NOTES
 
 ## RELATED LINKS

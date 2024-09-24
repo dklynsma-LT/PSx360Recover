@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-x360RecoverVaultConnThreshold
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Retrieves the connectivity threshold information for a specified x360Recover vault.
 
 ## SYNTAX
 
@@ -17,21 +17,23 @@ Get-x360RecoverVaultConnThreshold [-vaultId] <Int32> [-ProgressAction <ActionPre
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+This cmdlet retrieves the connectivity threshold information for a specified x360Recover vault by its ID.
+It sends a GET request to the x360Recover API and returns the connectivity threshold details.
 
 ## EXAMPLES
 
-### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
+### EXAMPLE 1
+```
+Get-x360RecoverVaultConnThreshold -vaultId 12345
 ```
 
-{{ Add example description here }}
+Retrieves the connectivity threshold information for the vault with ID 12345.
 
 ## PARAMETERS
 
 ### -vaultId
-{{ Fill vaultId Description }}
+The ID of the vault to retrieve connectivity threshold information for.
+This parameter is mandatory and can be piped.
 
 ```yaml
 Type: Int32
@@ -39,8 +41,8 @@ Parameter Sets: (All)
 Aliases: vault_id, id
 
 Required: True
-Position: 0
-Default value: None
+Position: 1
+Default value: 0
 Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
 ```
@@ -65,12 +67,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.Int32
-
+### System.Int32. The vault ID can be piped to this cmdlet.
 ## OUTPUTS
 
-### System.Object
-
+### System.Object. The connectivity threshold information for the specified vault.
 ## NOTES
 
 ## RELATED LINKS

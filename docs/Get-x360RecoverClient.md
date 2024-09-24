@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-x360RecoverClient
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Retrieves client information from x360Recover.
 
 ## SYNTAX
 
@@ -25,21 +25,31 @@ Get-x360RecoverClient [-clientId] <Int64> [[-includeAppliances] <Boolean>] [-Pro
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+This cmdlet retrieves client information from the x360Recover system.
+It can retrieve information for a specific client by ID or for multiple clients.
+Optionally, it can include short appliance information in the response.
 
 ## EXAMPLES
 
-### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
+### EXAMPLE 1
+```
+Get-x360RecoverClient -clientId 12345
 ```
 
-{{ Add example description here }}
+Retrieves information for the client with ID 12345.
+
+### EXAMPLE 2
+```
+Get-x360RecoverClient -includeAppliances $true
+```
+
+Retrieves information for all clients and includes short appliance information in the response.
 
 ## PARAMETERS
 
 ### -clientId
-{{ Fill clientId Description }}
+The ID of the client to retrieve information for.
+This parameter is used in the 'Single' parameter set and can be piped.
 
 ```yaml
 Type: Int64
@@ -47,14 +57,15 @@ Parameter Sets: Single
 Aliases: client_id, id
 
 Required: True
-Position: 0
-Default value: None
+Position: 1
+Default value: 0
 Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
 ```
 
 ### -includeAppliances
-{{ Fill includeAppliances Description }}
+If specified, includes short appliance information in the response.
+This parameter can be used in both 'Single' and 'Multi' parameter sets.
 
 ```yaml
 Type: Boolean
@@ -62,7 +73,7 @@ Parameter Sets: (All)
 Aliases: include_appliances
 
 Required: False
-Position: 1
+Position: 2
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -88,12 +99,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.Int64
-
+### System.Int64. The client ID can be piped to this cmdlet.
 ## OUTPUTS
 
-### System.Object
-
+### System.Object. The client information retrieved from x360Recover.
 ## NOTES
 
 ## RELATED LINKS

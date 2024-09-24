@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-x360RecoverVault
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Retrieves information about x360Recover vaults.
 
 ## SYNTAX
 
@@ -24,26 +24,59 @@ Get-x360RecoverVault [[-vaultId] <Int32>] [-ProgressAction <ActionPreference>] [
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+This cmdlet retrieves information about x360Recover vaults.
+It can retrieve information for a specific vault by ID or for multiple vaults based on various filters such as vault type, active status, URL presence, and limit.
+Optionally, it can include the device list for each vault.
 
 ## EXAMPLES
 
-### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
+### EXAMPLE 1
+```
+Get-x360RecoverVault -vaultId 12345
 ```
 
-{{ Add example description here }}
+Retrieves information for the vault with ID 12345.
+
+### EXAMPLE 2
+```
+Get-x360RecoverVault -vaultType 'Private' -active $true -limit 10
+```
+
+Retrieves information for up to 10 active private vaults.
+
+### EXAMPLE 3
+```
+Get-x360RecoverVault -withUrl $true -includeDevices $true
+```
+
+Retrieves information for vaults with a URL present and includes the device list for each vault.
 
 ## PARAMETERS
 
-### -active
-{{ Fill active Description }}
+### -vaultId
+The ID of the vault to return.
+This parameter is used in the 'Single' parameter set and can be piped.
 
 ```yaml
-Type: Boolean
+Type: Int32
+Parameter Sets: Single
+Aliases: vault_id, id
+
+Required: False
+Position: 1
+Default value: 0
+Accept pipeline input: True (ByPropertyName, ByValue)
+Accept wildcard characters: False
+```
+
+### -vaultType
+Filter to return only private or only cloud vaults.
+This parameter is used in the 'Multi' parameter set.
+
+```yaml
+Type: String
 Parameter Sets: Multi
-Aliases:
+Aliases: vault_type
 
 Required: False
 Position: 2
@@ -52,28 +85,30 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -includeDevices
-{{ Fill includeDevices Description }}
+### -active
+Filter to return only vaults with active status.
+This parameter is used in the 'Multi' parameter set.
 
 ```yaml
 Type: Boolean
 Parameter Sets: Multi
-Aliases: include_devices
+Aliases:
 
 Required: False
-Position: 5
+Position: 3
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -limit
-{{ Fill limit Description }}
+### -withUrl
+Filter to return only vaults with a URL present.
+This parameter is used in the 'Multi' parameter set.
 
 ```yaml
-Type: Int64
+Type: Boolean
 Parameter Sets: Multi
-Aliases:
+Aliases: with_url
 
 Required: False
 Position: 4
@@ -82,47 +117,33 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -vaultId
-{{ Fill vaultId Description }}
+### -limit
+The maximum number of vaults to return in the response.
+This parameter is used in the 'Multi' parameter set.
 
 ```yaml
-Type: Int32
-Parameter Sets: Single
-Aliases: vault_id, id
-
-Required: False
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName, ByValue)
-Accept wildcard characters: False
-```
-
-### -vaultType
-{{ Fill vaultType Description }}
-
-```yaml
-Type: String
+Type: Int64
 Parameter Sets: Multi
-Aliases: vault_type
-Accepted values: Private, Cloud
+Aliases:
 
 Required: False
-Position: 1
-Default value: None
+Position: 5
+Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -withUrl
-{{ Fill withUrl Description }}
+### -includeDevices
+If specified, returns the device list for each vault.
+This parameter is used in the 'Multi' parameter set.
 
 ```yaml
 Type: Boolean
 Parameter Sets: Multi
-Aliases: with_url
+Aliases: include_devices
 
 Required: False
-Position: 3
+Position: 6
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -148,12 +169,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.Int32
-
+### System.Int32. The vault ID can be piped to this cmdlet.
 ## OUTPUTS
 
-### System.Object
-
+### System.Object. The information about the specified vault(s).
 ## NOTES
 
 ## RELATED LINKS

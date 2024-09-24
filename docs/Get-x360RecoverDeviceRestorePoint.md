@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-x360RecoverDeviceRestorePoint
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Retrieves restore point information for a specified device.
 
 ## SYNTAX
 
@@ -17,21 +17,23 @@ Get-x360RecoverDeviceRestorePoint [-deviceId] <Int64> [-ProgressAction <ActionPr
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+This cmdlet retrieves restore point information for a specified device from the x360Recover system.
+It sends a GET request to the x360Recover API and returns the restore point details for the given device ID.
 
 ## EXAMPLES
 
-### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
+### EXAMPLE 1
+```
+Get-x360RecoverDeviceRestorePoint -deviceId 12345
 ```
 
-{{ Add example description here }}
+Retrieves restore point information for the device with ID 12345.
 
 ## PARAMETERS
 
 ### -deviceId
-{{ Fill deviceId Description }}
+The ID of the device to retrieve restore point information for.
+This parameter is mandatory and can be piped.
 
 ```yaml
 Type: Int64
@@ -39,8 +41,8 @@ Parameter Sets: (All)
 Aliases: device_id, id
 
 Required: True
-Position: 0
-Default value: None
+Position: 1
+Default value: 0
 Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
 ```
@@ -65,12 +67,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.Int64
-
+### System.Int64. The device ID can be piped to this cmdlet.
 ## OUTPUTS
 
-### System.Object
-
+### System.Object. The restore point information retrieved from x360Recover.
 ## NOTES
 
 ## RELATED LINKS

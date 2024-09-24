@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-x360RecoverDevice
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Retrieves AutoVerify information for a specified device.
 
 ## SYNTAX
 
@@ -24,21 +24,23 @@ Get-x360RecoverDevice [[-deviceId] <Int64>] [-ProgressAction <ActionPreference>]
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+This cmdlet retrieves AutoVerify information for a specified device from the x360Recover system.
+It sends a GET request to the x360Recover API and returns the AutoVerify details for the given device ID.
 
 ## EXAMPLES
 
-### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
+### EXAMPLE 1
+```
+Get-x360RecoverDeviceAutoVerify -deviceId 12345
 ```
 
-{{ Add example description here }}
+Retrieves AutoVerify information for the device with ID 12345.
 
 ## PARAMETERS
 
 ### -deviceId
-{{ Fill deviceId Description }}
+The ID of the device to retrieve AutoVerify information for.
+This parameter is mandatory and can be piped.
 
 ```yaml
 Type: Int64
@@ -46,29 +48,14 @@ Parameter Sets: Single
 Aliases: device_id, id
 
 Required: False
-Position: 0
-Default value: None
+Position: 1
+Default value: 0
 Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
 ```
 
 ### -limit
-{{ Fill limit Description }}
-
-```yaml
-Type: Int64
-Parameter Sets: Multi
-Aliases:
-
-Required: False
-Position: 1
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -offset
-{{ Fill offset Description }}
+Records limit for pagination
 
 ```yaml
 Type: Int64
@@ -77,7 +64,22 @@ Aliases:
 
 Required: False
 Position: 2
-Default value: None
+Default value: 0
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -offset
+Records offset for pagination
+
+```yaml
+Type: Int64
+Parameter Sets: Multi
+Aliases:
+
+Required: False
+Position: 3
+Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -102,12 +104,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.Int64
-
+### System.Int64. The device ID can be piped to this cmdlet.
 ## OUTPUTS
 
-### System.Object
-
+### System.Object. The AutoVerify information retrieved from x360Recover.
 ## NOTES
 
 ## RELATED LINKS

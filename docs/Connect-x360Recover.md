@@ -202,9 +202,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### None. You cannot pipe objects to this function.
 ## OUTPUTS
 
-### System.Void
+### None. This function does not produce any output.
 ## NOTES
 Ensure that the SecretManagement module is installed and a secret vault is created if using the secret management features.
 

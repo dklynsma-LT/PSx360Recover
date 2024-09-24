@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-x360RecoverBackupJobHistory
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Retrieves the backup job history for a specified client, device, and job.
 
 ## SYNTAX
 
@@ -19,21 +19,37 @@ Get-x360RecoverBackupJobHistory [-clientId] <Int64> [-deviceId] <Int64> [-jobId]
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+This cmdlet retrieves the backup job history for a specified client, device, and job from the x360Recover system.
+It supports pagination and filtering by start time.
 
 ## EXAMPLES
 
-### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
+### EXAMPLE 1
+```
+Get-x360RecoverBackupJobHistory -clientId 123 -deviceId 456 -jobId 789
 ```
 
-{{ Add example description here }}
+Retrieves the backup job history for the specified client, device, and job.
+
+### EXAMPLE 2
+```
+Get-x360RecoverBackupJobHistory -clientId 123 -deviceId 456 -jobId 789 -limit 10 -offset 20
+```
+
+Retrieves the backup job history for the specified client, device, and job with pagination.
+
+### EXAMPLE 3
+```
+Get-x360RecoverBackupJobHistory -clientId 123 -deviceId 456 -jobId 789 -jobsAfter (Get-Date "2023-01-01")
+```
+
+Retrieves the backup job history for the specified client, device, and job starting after January 1, 2023.
 
 ## PARAMETERS
 
 ### -clientId
-{{ Fill clientId Description }}
+The ID of the client to retrieve backup job history for.
+This parameter is mandatory.
 
 ```yaml
 Type: Int64
@@ -41,14 +57,15 @@ Parameter Sets: (All)
 Aliases: client_id
 
 Required: True
-Position: 0
-Default value: None
+Position: 1
+Default value: 0
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
 ### -deviceId
-{{ Fill deviceId Description }}
+The ID of the device to retrieve backup job history for.
+This parameter is mandatory.
 
 ```yaml
 Type: Int64
@@ -56,14 +73,15 @@ Parameter Sets: (All)
 Aliases: device_id, id
 
 Required: True
-Position: 1
-Default value: None
+Position: 2
+Default value: 0
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
 ### -jobId
-{{ Fill jobId Description }}
+The ID of the job to retrieve backup job history for.
+This parameter is mandatory.
 
 ```yaml
 Type: Int64
@@ -71,59 +89,15 @@ Parameter Sets: (All)
 Aliases: job_id
 
 Required: True
-Position: 2
-Default value: None
+Position: 3
+Default value: 0
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -jobsAfter
-{{ Fill jobsAfter Description }}
-
-```yaml
-Type: DateTime
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 5
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -jobsAfterUnixEpoch
-{{ Fill jobsAfterUnixEpoch Description }}
-
-```yaml
-Type: Int64
-Parameter Sets: (All)
-Aliases: starttime_begin, startTimeBegin
-
-Required: False
-Position: 5
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -limit
-{{ Fill limit Description }}
-
-```yaml
-Type: Int64
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 3
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -offset
-{{ Fill offset Description }}
+The maximum number of records to return for pagination.
+This parameter is optional.
 
 ```yaml
 Type: Int64
@@ -132,6 +106,54 @@ Aliases:
 
 Required: False
 Position: 4
+Default value: 0
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -offset
+The number of records to skip for pagination.
+This parameter is optional.
+
+```yaml
+Type: Int64
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 5
+Default value: 0
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -jobsAfterUnixEpoch
+The minimum backup start time value as a Unix timestamp.
+This parameter is optional.
+
+```yaml
+Type: Int64
+Parameter Sets: (All)
+Aliases: starttime_begin, startTimeBegin
+
+Required: False
+Position: 6
+Default value: 0
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -jobsAfter
+The minimum backup start time value as a DateTime object.
+This parameter is optional.
+
+```yaml
+Type: DateTime
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 6
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -157,12 +179,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.Int64
-
+### System.Int32. The client ID, device ID, and job ID can be piped to this cmdlet.
 ## OUTPUTS
 
-### System.Object
-
+### System.Object. The backup job history information retrieved from x360Recover.
 ## NOTES
 
 ## RELATED LINKS

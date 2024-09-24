@@ -130,9 +130,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### None. You cannot pipe objects to this function.
 ## OUTPUTS
 
-### System.Object
+### System.Object. The response from the HTTP request, either as a raw string or a converted JSON object.
 ## NOTES
 
 ## RELATED LINKS
