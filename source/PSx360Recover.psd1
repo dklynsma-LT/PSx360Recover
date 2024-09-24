@@ -24,7 +24,7 @@ GUID = '34e3f7e5-2f13-4b03-9a20-425791bedb0a'
 Author = 'David Klynsma'
 
 # Company or vendor of this module
-CompanyName = 'LinkTech'
+CompanyName = ''
 
 # Copyright statement for this module
 Copyright = '(c) David Klynsma. All rights reserved.'

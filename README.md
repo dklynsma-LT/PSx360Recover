@@ -33,19 +33,3 @@ PS > Get-x360RecoverOrganization
 | [Get-x360RecoverVault](./docs/Get-x360RecoverVault.md) | Retrieves information about x360Recover vaults. |
 | [Get-x360RecoverVaultConnThreshold](./docs/Get-x360RecoverVaultConnThreshold.md) | Retrieves the connectivity threshold information for a specified x360Recover vault. |
 | [Invoke-x360RecoverRequest](./docs/Invoke-x360RecoverRequest.md) | Sends an HTTP request to the specified URI using the specified method. |
-
-## TODO
-
-1. [ ] Add comment based help to all functions
-2. [ ] Resolve Pester test findings
-3. [ ] Use in live environments for other bugs or usability issues.
-4. [ ] Add -all parameter on get requests to deal with pagination.
-5. [ ] Implement set endpoint
-
-
-
-
-
-
-
-
