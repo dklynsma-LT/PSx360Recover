@@ -48,6 +48,7 @@ function Connect-x360Recover {
     Ensure that the SecretManagement module is installed and a secret vault is created if using the secret management features.
 #>
 	[CmdletBinding( DefaultParameterSetName = 'Default Auth' )]
+	[MetadataAttribute('IGNORE')]
 	[OutputType([System.Void])]
 	param (
 		# APi Key for authentication

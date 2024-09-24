@@ -64,7 +64,7 @@ Describe ('{0} - Core Tests' -f $ModuleName) -Tags 'Module' {
 
 Describe ('{0} - Module Load Test' -f $ModuleName) -Tags 'Module' {
     It 'Passed Module load' {
-        Get-Module -Name 'x360Recover' | Should -Not -Be $null
+        Get-Module -Name 'PSx360Recover' | Should -Not -Be $null
     }
 }
 

@@ -9,7 +9,7 @@
 @{
 
 # Script module or binary module file associated with this manifest.
-RootModule = 'PSx360Recover.psm1'
+RootModule = '.\PSx360Recover.psm1'
 
 # Version number of this module.
 ModuleVersion = '0.0.1'
@@ -107,13 +107,13 @@ PrivateData = @{
 		)
 
         # A URL to the license for this module.
-        # LicenseUri = ''
+        LicenseUri = 'https://github.com/LinkTechSvcs/PSx360Recover/blob/main/LICENSE'
 
         # A URL to the main website for this project.
-        # ProjectUri = ''
+        ProjectUri = 'https://github.com/LinkTechSvcs/PSx360Recover'
 
         # A URL to an icon representing this module.
-        # IconUri = ''
+        IconUri = 'https://github.com/LinkTechSvcs/PSx360Recover/blob/main/axcient-logo-85x85.png'
 
         # ReleaseNotes of this module
         ReleaseNotes = ''

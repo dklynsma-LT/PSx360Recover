@@ -24,8 +24,9 @@ function Import-ModuleToBeTested {
     if (Get-Module -Name $ModuleName) {
         Remove-Module $ModuleName -Force
     }
-    $ManifestPath = Get-ChildItem -Path (Join-Path -Path . -ChildPath 'Source') -Filter ('{0}.psd1' -f $ModuleName) | Select-Object -ExpandProperty FullName
-    Import-Module $ManifestPath -Verbose:$False -Force
+    #$ManifestPath = Get-ChildItem -Path (Join-Path -Path . -ChildPath "Ouput\Module\$ModuleName") -Filter ('*.\{0}.psd1' -f $ModuleName) | Select-Object -ExpandProperty FullName
+	$ManifestPath = Get-ChildItem -Path ".\Output\module\$ModuleName\*\$ModuleName.psd1" | Select-Object -ExpandProperty FullName
+    Import-Module $ManifestPath -Verbose:$false -Force
 }
 
 function Get-FunctionList {
@@ -79,9 +80,9 @@ function Get-AllMetadata {
     $AllMetadata = foreach ($Function in $FunctionList) {
         $AST = $Function.ScriptBlock.Ast
         $MetadataElement = Get-MetadataElement -AST $AST
-        $PositionalArguments = Get-PositionalArguments -MetadataElement $MetadataElement
-        $Metadata = Get-Metadata -PositionalArguments $PositionalArguments
-        $Metadata
+		$PositionalArguments = Get-PositionalArguments -MetadataElement $MetadataElement
+		$Metadata = Get-Metadata -PositionalArguments $PositionalArguments
+		$Metadata
     }
     return $AllMetadata
 }

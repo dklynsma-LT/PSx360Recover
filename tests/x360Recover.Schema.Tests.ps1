@@ -4,11 +4,13 @@
 #>
 
 BeforeDiscovery {
+	Add-type -Path ".\Source\Binaries\MetadataAttribute.dll"
 	Import-Module ('{0}\TestScaffold.psm1' -f $PSScriptRoot) -Force
 	Import-ModuleToBeTested
 	$Endpoints = Get-Endpoints
 	$FunctionList = Get-FunctionList
 	$ModuleName = Get-ModuleName
+
 }
 BeforeAll {
 	$Endpoints = Get-Endpoints
