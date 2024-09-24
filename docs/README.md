@@ -2,18 +2,8 @@
 
 | Function | Synopsis |
 | --- | --- |
-| [Connect-x360Recover](./docs/Connect-x360Recover.md) | 
-Connect-x360Recover [-ApiKey <string>] [-Instance <string>] [-UseSecretManagement] [-VaultName <string>] [-WriteToSecretVault] [<CommonParameters>]
-
-Connect-x360Recover -VaultName <string> -WriteToSecretVault [-ApiKey <string>] [-Instance <string>] [-UseSecretManagement] [-SecretPrefix <string>] [<CommonParameters>]
-
-Connect-x360Recover -VaultName <string> [-UseSecretManagement] [-WriteToSecretVault] [-ReadFromSecretVault] [-SecretPrefix <string>] [<CommonParameters>]
- |
-| [Get-x360RecoverAppliance](./docs/Get-x360RecoverAppliance.md) | 
-Get-x360RecoverAppliance [[-serviceId] <string>] [[-includeDevices] <bool>] [<CommonParameters>]
-
-Get-x360RecoverAppliance [-applianceId] <long> [[-includeDevices] <bool>] [<CommonParameters>]
- |
+| [Connect-x360Recover](./docs/Connect-x360Recover.md) | Connects to the x360Recover API instance. |
+| [Get-x360RecoverAppliance](./docs/Get-x360RecoverAppliance.md) | Retrieves information about x360Recover appliances. |
 | [Get-x360RecoverApplianceByClient](./docs/Get-x360RecoverApplianceByClient.md) | 
 Get-x360RecoverApplianceByClient [-clientId] <long> [[-includeDevices] <bool>] [<CommonParameters>]
  |
@@ -44,9 +34,7 @@ Get-x360RecoverDeviceByClient [-clientId] <long> [[-serviceId] <string>] [[-d2cO
 | [Get-x360RecoverDeviceRestorePoint](./docs/Get-x360RecoverDeviceRestorePoint.md) | 
 Get-x360RecoverDeviceRestorePoint [-deviceId] <long> [<CommonParameters>]
  |
-| [Get-x360RecoverOrganization](./docs/Get-x360RecoverOrganization.md) | 
-Get-x360RecoverOrganization [<CommonParameters>]
- |
+| [Get-x360RecoverOrganization](./docs/Get-x360RecoverOrganization.md) | Retrieves organization information from x360Recover. |
 | [Get-x360RecoverVault](./docs/Get-x360RecoverVault.md) | 
 Get-x360RecoverVault [[-vaultType] <string>] [[-active] <bool>] [[-withUrl] <bool>] [[-limit] <long>] [[-includeDevices] <bool>] [<CommonParameters>]
 
@@ -55,8 +43,6 @@ Get-x360RecoverVault [[-vaultId] <int>] [<CommonParameters>]
 | [Get-x360RecoverVaultConnThreshold](./docs/Get-x360RecoverVaultConnThreshold.md) | 
 Get-x360RecoverVaultConnThreshold [-vaultId] <int> [<CommonParameters>]
  |
-| [Invoke-x360RecoverRequest](./docs/Invoke-x360RecoverRequest.md) | 
-Invoke-x360RecoverRequest [-Method] <string> [-Uri] <string> [[-Body] <string>] [-Raw] [<CommonParameters>]
- |
+| [Invoke-x360RecoverRequest](./docs/Invoke-x360RecoverRequest.md) | Sends an HTTP request to the specified URI using the specified method. |
 
 #

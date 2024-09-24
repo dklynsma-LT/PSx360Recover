@@ -1,4 +1,26 @@
 function Get-x360RecoverDeviceRestorePoint{
+<#
+.SYNOPSIS
+    Retrieves restore point information for a specified device.
+
+.DESCRIPTION
+    This cmdlet retrieves restore point information for a specified device from the x360Recover system. It sends a GET request to the x360Recover API and returns the restore point details for the given device ID.
+
+.PARAMETER deviceId
+    The ID of the device to retrieve restore point information for. This parameter is mandatory and can be piped.
+
+.EXAMPLE
+    PS> Get-x360RecoverDeviceRestorePoint -deviceId 12345
+
+    Retrieves restore point information for the device with ID 12345.
+
+.INPUTS
+    System.Int64. The device ID can be piped to this cmdlet.
+
+.OUTPUTS
+    System.Object. The restore point information retrieved from x360Recover.
+
+#>
 	[CmdletBinding()]
 	[OutputType([Object])]
 	[MetadataAttribute(

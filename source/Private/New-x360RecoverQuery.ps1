@@ -1,15 +1,50 @@
 function New-x360RecoverQuery {
+<#
+.SYNOPSIS
+    Builds a query string or hash table for x360Recover API requests.
+
+.DESCRIPTION
+    This cmdlet constructs a query string or hash table from the provided command name and parameters. It supports options to format arrays as comma-separated values and to return the result as a string.
+
+.PARAMETER CommandName
+    The name of the command for which the query is being built. This parameter is mandatory.
+
+.PARAMETER Parameters
+    A hash table of parameters to include in the query. This parameter is mandatory.
+
+.PARAMETER CommaSeparatedArrays
+    If specified, arrays will be formatted as comma-separated values in the query string. This parameter is optional.
+
+.PARAMETER AsString
+    If specified, the query will be returned as a string. Otherwise, it will be returned as a hash table. This parameter is optional.
+
+.EXAMPLE
+    PS> $params = @{ param1 = "value1"; param2 = "value2" }
+    PS> New-x360RecoverQuery -CommandName "Get-x360RecoverDevice" -Parameters $params
+
+    Builds a query string or hash table for the "Get-x360RecoverDevice" command using the specified parameters.
+
+.EXAMPLE
+    PS> $params = @{ param1 = "value1"; param2 = @("value2", "value3") }
+    PS> New-x360RecoverQuery -CommandName "Get-x360RecoverDevice" -Parameters $params -CommaSeparatedArrays -AsString
+
+    Builds a query string for the "Get-x360RecoverDevice" command using the specified parameters, formatting arrays as comma-separated values, and returns the result as a string.
+
+.INPUTS
+    System.String. The command name can be piped to this cmdlet.
+    System.Collections.Hashtable. The parameters can be piped to this cmdlet.
+
+.OUTPUTS
+    System.String or System.Collections.Hashtable. The constructed query string or hash table.
+
+#>
 	[CmdletBinding()]
 	[OutputType([String], [HashTable])]
 	[Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSUseShouldProcessForStateChangingFunctions', '', Justification = 'Private function - no need to support.')]
 	param (
-		[Parameter(
-			Mandatory = $True
-		)]
+		[Parameter(Mandatory = $True)]
 		[String]$CommandName,
-		[Parameter(
-			Mandatory = $True
-		)]
+		[Parameter(Mandatory = $True)]
 		[HashTable]$Parameters,
 		[Switch]$CommaSeparatedArrays,
 		[Switch]$AsString

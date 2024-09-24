@@ -1,4 +1,34 @@
 function Get-x360RecoverSecrets {
+<#
+.SYNOPSIS
+    Retrieves x360Recover connection information from a secret vault.
+
+.DESCRIPTION
+    This cmdlet retrieves x360Recover connection information, including the URL, instance name, and API key, from a specified secret vault. It uses the SecretManagement module to access the secrets and sets up script-scoped variables for the connection and authentication information.
+
+.PARAMETER VaultName
+    The name of the secret vault to use for retrieving the secrets. This parameter is mandatory.
+
+.PARAMETER SecretPrefix
+    The prefix to use for the secret names. Default is 'x360Recover'.
+
+.EXAMPLE
+    PS> Get-x360RecoverSecrets -VaultName "MyVault"
+
+    Retrieves x360Recover connection information from the "MyVault" secret vault using the default secret prefix.
+
+.EXAMPLE
+    PS> Get-x360RecoverSecrets -VaultName "MyVault" -SecretPrefix "CustomPrefix"
+
+    Retrieves x360Recover connection information from the "MyVault" secret vault using the custom secret prefix "CustomPrefix".
+
+.INPUTS
+    None. You cannot pipe objects to this cmdlet.
+
+.OUTPUTS
+    System.Void. This cmdlet does not produce any output.
+
+#>
 	[CmdletBinding()]
 	[OutputType([System.Void])]
 	param(

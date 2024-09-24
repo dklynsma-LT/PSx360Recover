@@ -1,4 +1,39 @@
 function New-x360RecoverGETRequest {
+<#
+.SYNOPSIS
+    Sends a GET request to the specified x360Recover API resource.
+
+.DESCRIPTION
+    This cmdlet sends a GET request to the specified x360Recover API resource. It constructs the request URI using the provided resource and query string parameters, and returns the response. Optionally, it can return the raw response.
+
+.PARAMETER Resource
+    The resource to send the request to. This parameter is mandatory.
+
+.PARAMETER QSCollection
+    A hashtable used to build the query string. This parameter is optional.
+
+.PARAMETER Raw
+    If specified, returns the raw response. This parameter is optional.
+
+.EXAMPLE
+    PS> $qs = @{ param1 = "value1"; param2 = "value2" }
+    PS> New-x360RecoverGETRequest -Resource "device" -QSCollection $qs
+
+    Sends a GET request to the "device" resource with the specified query string parameters.
+
+.EXAMPLE
+    PS> New-x360RecoverGETRequest -Resource "client" -Raw
+
+    Sends a GET request to the "client" resource and returns the raw response.
+
+.INPUTS
+    System.String. The resource can be piped to this cmdlet.
+    System.Collections.Hashtable. The query string parameters can be piped to this cmdlet.
+
+.OUTPUTS
+    System.Object. The response from the x360Recover API.
+
+#>
 	[CmdletBinding()]
 	[OutputType([Object])]
 	[Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSUseShouldProcessForStateChangingFunctions', '', Justification = 'Private function - no need to support.')]

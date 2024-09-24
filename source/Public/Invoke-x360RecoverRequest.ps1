@@ -1,42 +1,46 @@
 
 function Invoke-x360RecoverRequest {
-	<#
-	.SYNOPSIS
-		Sends an HTTP request to the specified URI using the specified method.
+<#
+.SYNOPSIS
+	Sends an HTTP request to the specified URI using the specified method.
 
-	.DESCRIPTION
-		This cmdlet sends an HTTP request to the specified URI using the specified method. It supports GET, POST, PUT, PATCH, and DELETE methods. Optionally, it can include a request body and return the raw response.
+.DESCRIPTION
+	This cmdlet sends an HTTP request to the specified URI using the specified method. It supports GET, POST, PUT, PATCH, and DELETE methods. Optionally, it can include a request body and return the raw response.
 
-	.PARAMETER Method
-		The HTTP method to use. Valid values are GET, POST, PUT, PATCH, and DELETE.
+.PARAMETER Method
+	The HTTP method to use. Valid values are GET, POST, PUT, PATCH, and DELETE.
 
-	.PARAMETER Uri
-		The URI to send the request to. Must be a valid HTTP or HTTPS URI.
+.PARAMETER Uri
+	The URI to send the request to. Must be a valid HTTP or HTTPS URI.
 
-	.PARAMETER Body
-		The body of the request. Must be a valid JSON string if provided.
+.PARAMETER Body
+	The body of the request. Must be a valid JSON string if provided.
 
-	.PARAMETER Raw
-		If specified, returns the raw response without converting from JSON.
+.PARAMETER Raw
+	If specified, returns the raw response without converting from JSON.
 
-	.EXAMPLE
-		PS> Invoke-x360RecoverRequest -Method GET -Uri "https://axapi.axcient.com/x360recover/device"
+.EXAMPLE
+	PS> Invoke-x360RecoverRequest -Method GET -Uri "https://axapi.axcient.com/x360recover/device"
 
-		Sends a GET request to the x360 Device endpoint and returns JSON reponse.
+	Sends a GET request to the x360 Device endpoint and returns JSON reponse.
 
-	.EXAMPLE
-		PS> Invoke-x360RecoverRequest -Method POST -Uri "https://axapi.axcient.com/x360recover" -Body '{"key":"value"}'
+.EXAMPLE
+	PS> Invoke-x360RecoverRequest -Method POST -Uri "https://axapi.axcient.com/x360recover" -Body '{"key":"value"}'
 
-		Sends a POST request with the specified body to the specified URI and returns the response.
+	Sends a POST request with the specified body to the specified URI and returns the response.
 
-	.EXAMPLE
-		PS> Invoke-x360RecoverRequest -Method GET -Uri "https://axapi.axcient.com/x360recover/organization" -Raw
+.EXAMPLE
+	PS> Invoke-x360RecoverRequest -Method GET -Uri "https://axapi.axcient.com/x360recover/organization" -Raw
 
-		Sends a GET request to the x360Organization endpoint and returns the raw response.
+	Sends a GET request to the x360Organization endpoint and returns the raw response.
 
-	.NOTES
+.INPUTS
+    None. You cannot pipe objects to this function.
 
-	#>
+.OUTPUTS
+    System.Object. The response from the HTTP request, either as a raw string or a converted JSON object.
+
+#>
 	[Cmdletbinding()]
 	[OutputType([Object])]
 	[MetadataAttribute('IGNORE')]

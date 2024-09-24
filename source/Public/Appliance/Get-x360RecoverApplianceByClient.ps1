@@ -1,4 +1,34 @@
 function Get-x360RecoverApplianceByClient {
+<#
+.SYNOPSIS
+    Retrieves appliance information for a specified client from x360Recover.
+
+.DESCRIPTION
+    This cmdlet retrieves appliance information for a specified client from the x360Recover system. It can filter appliances based on the client ID and optionally include detailed information.
+
+.PARAMETER clientId
+    The ID of the client to retrieve appliance information for. This parameter is mandatory and can be piped.
+
+.PARAMETER includeDetails
+    If specified, includes detailed information for each appliance. This parameter is optional.
+
+.EXAMPLE
+    PS> Get-x360RecoverApplianceByClient -clientId 12345
+
+    Retrieves appliance information for the client with ID 12345.
+
+.EXAMPLE
+    PS> Get-x360RecoverApplianceByClient -clientId 12345 -includeDetails $true
+
+    Retrieves detailed appliance information for the client with ID 12345.
+
+.INPUTS
+    System.Int64. The client ID can be piped to this cmdlet.
+
+.OUTPUTS
+    System.Object. The appliance information retrieved from x360Recover.
+
+#>
 	[CmdletBinding()]
 	[OutputType([Object])]
 	[MetadataAttribute(

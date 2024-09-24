@@ -1,4 +1,34 @@
 function Get-x360RecoverClient {
+<#
+.SYNOPSIS
+    Retrieves client information from x360Recover.
+
+.DESCRIPTION
+    This cmdlet retrieves client information from the x360Recover system. It can retrieve information for a specific client by ID or for multiple clients. Optionally, it can include short appliance information in the response.
+
+.PARAMETER clientId
+    The ID of the client to retrieve information for. This parameter is used in the 'Single' parameter set and can be piped.
+
+.PARAMETER includeAppliances
+    If specified, includes short appliance information in the response. This parameter can be used in both 'Single' and 'Multi' parameter sets.
+
+.EXAMPLE
+    PS> Get-x360RecoverClient -clientId 12345
+
+    Retrieves information for the client with ID 12345.
+
+.EXAMPLE
+    PS> Get-x360RecoverClient -includeAppliances $true
+
+    Retrieves information for all clients and includes short appliance information in the response.
+
+.INPUTS
+    System.Int64. The client ID can be piped to this cmdlet.
+
+.OUTPUTS
+    System.Object. The client information retrieved from x360Recover.
+
+#>
 	[CmdletBinding(DefaultParameterSetName = 'Multi')]
 	[OutputType([Object])]
 	[MetadataAttribute(

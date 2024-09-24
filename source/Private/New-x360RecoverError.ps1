@@ -1,6 +1,36 @@
 using namespace System.Collections.Generic
 using namespace System.Management.Automation
 function New-x360RecoverError {
+<#
+.SYNOPSIS
+    Generates a detailed error message for x360Recover API errors.
+
+.DESCRIPTION
+    This cmdlet processes an ErrorRecord object and generates a detailed error message for x360Recover API errors. It handles various error scenarios, including HTTP request exceptions and JSON error details, and constructs a comprehensive error message.
+
+.PARAMETER ErrorRecord
+    The ErrorRecord object containing the error details. This parameter is mandatory.
+
+.PARAMETER HasResponse
+    Indicates whether the error includes an HTTP response. This parameter is optional.
+
+.EXAMPLE
+    PS> try {
+    >>     # Some code that triggers an error
+    >> } catch {
+    >>     $errorRecord = $_
+    >>     New-x360RecoverError -ErrorRecord $errorRecord -HasResponse
+    >> }
+
+    Processes the caught error and generates a detailed error message for the x360Recover API error.
+
+.INPUTS
+	None. You cannot pipe objects to this function.
+
+.OUTPUTS
+	None. This function throws a terminating error with the processed error details..
+
+#>
 	[CmdletBinding()]
 	[Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSUseShouldProcessForStateChangingFunctions', '', Justification = 'Private function - no need to support.')]
 	param (
@@ -9,7 +39,7 @@ function New-x360RecoverError {
 		[Parameter()]
 		[switch]$HasResponse
 	)
-	#TODO: test this fully for the api string match
+
 	if (($Error.Exception -is [System.Net.Http.HttpRequestException]) -or ($Error.Exception -is [System.Net.WebException])) {
 		Write-Verbose 'Generating x360Recover error output.'
 		$ExceptionMessage = [Hashset[String]]::New()

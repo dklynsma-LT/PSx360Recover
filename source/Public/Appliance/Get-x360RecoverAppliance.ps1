@@ -1,19 +1,19 @@
 function Get-x360RecoverAppliance {
 <#
 .SYNOPSIS
-    Retrieves information about x360Recover appliances.
+    Retrieves appliance information from x360Recover.
 
 .DESCRIPTION
-    This cmdlet retrieves information about x360Recover appliances. It can retrieve information for a specific appliance by ID or for all appliances. Optionally, it can include short appliance information in the response.
+    This cmdlet retrieves appliance information from the x360Recover system. It can retrieve information for a specific appliance by ID or for multiple appliances based on various filters such as service ID and whether to include device information.
 
 .PARAMETER applianceId
-    The ID of the appliance to return. This parameter is mandatory for the 'Single' parameter set and can be piped.
+    The ID of the appliance to retrieve information for. This parameter is used in the 'Single' parameter set and can be piped.
 
 .PARAMETER serviceId
-    Unique serial number of the service (4 symbols). This parameter is used in the 'Multi' parameter set.
+    The service ID to filter appliances. This parameter is optional.
 
 .PARAMETER includeDevices
-    Include short appliance information in the response or not. This parameter is optional.
+    If specified, includes short appliance information in the response. This parameter can be used in both 'Single' and 'Multi' parameter sets.
 
 .EXAMPLE
     PS> Get-x360RecoverAppliance -applianceId 12345
@@ -21,16 +21,15 @@ function Get-x360RecoverAppliance {
     Retrieves information for the appliance with ID 12345.
 
 .EXAMPLE
-    PS> Get-x360RecoverAppliance -serviceId "ABCD"
+    PS> Get-x360RecoverAppliance -serviceId "ABCD" -includeDevices $true
 
-    Retrieves information for all appliances associated with the service ID "ABCD".
+    Retrieves information for appliances with service ID "ABCD" and includes short appliance information in the response.
 
-.EXAMPLE
-    PS> Get-x360RecoverAppliance -includeDevices $true
+.INPUTS
+    System.Int64. The appliance ID can be piped to this cmdlet.
 
-    Retrieves information for all appliances and includes short appliance information in the response.
-
-.NOTES
+.OUTPUTS
+    System.Object. The appliance information retrieved from x360Recover.
 
 #>
 	[CmdletBinding(DefaultParameterSetName = 'Multi')]

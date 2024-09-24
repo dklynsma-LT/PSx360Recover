@@ -8,7 +8,7 @@ schema: 2.0.0
 # Connect-x360Recover
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Connects to the x360Recover API instance.
 
 ## SYNTAX
 
@@ -21,31 +21,39 @@ Connect-x360Recover [-ApiKey <String>] [-Instance <String>] [-UseSecretManagemen
 ### Secret Vault Write
 ```
 Connect-x360Recover [-ApiKey <String>] [-Instance <String>] [-UseSecretManagement] -VaultName <String>
- [-WriteToSecretVault] [-SecretPrefix <String>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-WriteToSecretVault] [-VaultEntryPrefix <String>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### Secret Vault Read
 ```
 Connect-x360Recover [-UseSecretManagement] -VaultName <String> [-WriteToSecretVault] [-ReadFromSecretVault]
- [-SecretPrefix <String>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-VaultEntryPrefix <String>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+This function initializes the module, checks for the SecretManagement module, and retrieves secrets from a secret vault if specified.
+It also sets up the connection information for the x360Recover API instance.
 
 ## EXAMPLES
 
-### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
+### EXAMPLE 1
+```
+Connect-x360Recover -Api 'your-api-key' -Instance 'prod'
 ```
 
-{{ Add example description here }}
+Connects to the production instance of the x360Recover API using the provided API key.
+
+### EXAMPLE 2
+```
+Connect-x360Recover -UseSecretManagement -VaultName 'MyVault' -ReadFromSecretVault
+```
+
+Connects to the x360Recover API using credentials stored in the 'MyVault' secret vault.
 
 ## PARAMETERS
 
 ### -ApiKey
-{{ Fill ApiKey Description }}
+APi Key for authentication
 
 ```yaml
 Type: String
@@ -60,42 +68,12 @@ Accept wildcard characters: False
 ```
 
 ### -Instance
-{{ Fill Instance Description }}
+The Axcient API Instance to connect to.
+Choose from 'prod' or 'mock'.
 
 ```yaml
 Type: String
 Parameter Sets: Default Auth, Secret Vault Write
-Aliases:
-Accepted values: prod, mock
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ReadFromSecretVault
-{{ Fill ReadFromSecretVault Description }}
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: Secret Vault Read
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SecretPrefix
-{{ Fill SecretPrefix Description }}
-
-```yaml
-Type: String
-Parameter Sets: Secret Vault Write, Secret Vault Read
 Aliases:
 
 Required: False
@@ -106,7 +84,7 @@ Accept wildcard characters: False
 ```
 
 ### -UseSecretManagement
-{{ Fill UseSecretManagement Description }}
+Switch to use the SecretManagement module to store and retrieve the API key.
 
 ```yaml
 Type: SwitchParameter
@@ -115,13 +93,13 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -VaultName
-{{ Fill VaultName Description }}
+The name of the secret vault to use.
 
 ```yaml
 Type: String
@@ -148,7 +126,7 @@ Accept wildcard characters: False
 ```
 
 ### -WriteToSecretVault
-{{ Fill WriteToSecretVault Description }}
+Switch to write the updated credentials to the secret vault.
 
 ```yaml
 Type: SwitchParameter
@@ -157,7 +135,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -169,7 +147,37 @@ Aliases:
 
 Required: True
 Position: Named
-Default value: None
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ReadFromSecretVault
+Switch to read the credentials from the secret vault.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: Secret Vault Read
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -VaultEntryPrefix
+The prefix to add to the name of the secrets stored in the secret vault.
+
+```yaml
+Type: String
+Parameter Sets: Secret Vault Write, Secret Vault Read
+Aliases:
+
+Required: False
+Position: Named
+Default value: X360Recover
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -194,12 +202,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-
 ## OUTPUTS
 
 ### System.Void
-
 ## NOTES
+Ensure that the SecretManagement module is installed and a secret vault is created if using the secret management features.
 
 ## RELATED LINKS

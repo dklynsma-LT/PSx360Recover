@@ -2,13 +2,20 @@ TOPIC
     about_PSx360Recover
 
 SHORT DESCRIPTION
-    A Powershell API wrapper for the x360Recover API
+    A PowerShell API wrapper for the x360Recover API.
 
 LONG DESCRIPTION
-    A Powershell API wrapper for the x360Recover API
+    PSx360Recover is a PowerShell module that provides a wrapper for the x360Recover API. It allows users to interact with the x360Recover system programmatically, enabling automation of tasks such as retrieving device information, managing backup jobs, and accessing client data.
 
 EXAMPLES
-    PS C:\> {{ add examples here }}
+    PS C:\> Get-x360RecoverClient -clientId 12345
+    Retrieves information for the client with ID 12345.
+
+    PS C:\> Get-x360RecoverDevice -deviceId 67890
+    Retrieves information for the device with ID 67890.
+
+    PS C:\> Set-x360RecoverSecrets -URL "https://api.example.com" -Instance "prod" -ApiKey "your-api-key" -UseSecretManagement -VaultName "MyVault" -WriteToSecretVault
+    Sets the x360Recover connection information in the "MyVault" secret vault.
 
 NOTE:
     Thank you to all those who contributed to this module, by writing code, sharing opinions, and provided feedback.
@@ -20,5 +27,5 @@ SEE ALSO
     - {{ Please add Project URI such as github }}}
 
 KEYWORDS
-    {{ Add comma separated keywords here }}
+    Axcient, x360Recover, PowerShell, API, Backup, Automation, Client, Device
 

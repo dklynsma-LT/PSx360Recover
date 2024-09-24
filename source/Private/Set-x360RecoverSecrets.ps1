@@ -1,5 +1,47 @@
-
 function Set-x360RecoverSecrets {
+<#
+.SYNOPSIS
+    Sets the x360Recover connection information in a secret vault.
+
+.DESCRIPTION
+    This cmdlet sets the x360Recover connection information, including the URL, instance name, and API key, in a specified secret vault. It supports reading from and writing to the secret vault using the SecretManagement module.
+
+.PARAMETER URL
+    The URL of the x360Recover API instance.
+
+.PARAMETER Instance
+    The x360Recover instance name.
+
+.PARAMETER ApiKey
+    The client secret of the application.
+
+.PARAMETER UseSecretManagement
+    Use the Key Vault to store the connection information. This parameter is mandatory.
+
+.PARAMETER VaultName
+    The name of the secret vault to use.
+
+.PARAMETER WriteToSecretVault
+    Whether to write updated connection information to the secret vault.
+
+.PARAMETER ReadFromSecretVault
+    Whether to read the connection information from the secret vault.
+
+.PARAMETER SecretPrefix
+    The prefix to use for the secret names. Default is 'x360Recover'.
+
+.EXAMPLE
+    PS> Set-x360RecoverSecrets -URL "https://axapi.axcient.com/x360recover" -Instance "prod" -ApiKey "your-api-key" -UseSecretManagement -VaultName "MyVault" -WriteToSecretVault
+
+    Sets the x360Recover connection information in the "MyVault" secret vault.
+
+.INPUTS
+    None. You cannot pipe objects to this cmdlet.
+
+.OUTPUTS
+    System.Void. This cmdlet does not produce any output.
+
+#>
 	[CmdletBinding()]
 	[OutputType([System.Void])]
 	[Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSUseShouldProcessForStateChangingFunctions', '', Justification = 'Private function - no need to support.')]

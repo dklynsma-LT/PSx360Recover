@@ -1,4 +1,25 @@
 function Get-x360RecoverVaultConnThreshold {
+	<#
+.SYNOPSIS
+    Retrieves the connectivity threshold information for a specified x360Recover vault.
+
+.DESCRIPTION
+    This cmdlet retrieves the connectivity threshold information for a specified x360Recover vault by its ID. It sends a GET request to the x360Recover API and returns the connectivity threshold details.
+
+.PARAMETER vaultId
+    The ID of the vault to retrieve connectivity threshold information for. This parameter is mandatory and can be piped.
+
+.EXAMPLE
+    PS> Get-x360RecoverVaultConnThreshold -vaultId 12345
+
+    Retrieves the connectivity threshold information for the vault with ID 12345.
+
+.INPUTS
+    System.Int32. The vault ID can be piped to this cmdlet.
+
+.OUTPUTS
+    System.Object. The connectivity threshold information for the specified vault.
+#>
 	[CmdletBinding()]
 	[OutputType([Object])]
 	[MetadataAttribute(

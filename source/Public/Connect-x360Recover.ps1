@@ -38,6 +38,12 @@ function Connect-x360Recover {
 
     Connects to the x360Recover API using credentials stored in the 'MyVault' secret vault.
 
+.INPUTS
+	None. You cannot pipe objects to this function.
+
+.OUTPUTS
+    None. This function does not produce any output.
+
 .NOTES
     Ensure that the SecretManagement module is installed and a secret vault is created if using the secret management features.
 #>
@@ -79,8 +85,11 @@ function Connect-x360Recover {
 	)
 
 	begin {
-		# this loads the starting variables for the module
-		Initialize-Module
+		# Set the x360Recover instances.
+		[hashtable]$Script:x360RInstances = @{
+			'prod' = 'https://axapi.axcient.com/x360recover'
+			'mock' = 'https://ax-pub-recover.wiremockapi.cloud'
+		}
 	}
 
 	process {

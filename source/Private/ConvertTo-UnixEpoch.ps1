@@ -1,14 +1,36 @@
 function ConvertTo-UnixEpoch {
-	<#
-	.SYNOPSIS
-		Converts a PowerShell DateTime object to a Unix Epoch timestamp.
-	.DESCRIPTION
-		Takes a PowerShell DateTime object and returns a Unix Epoch timestamp representing the same date/time.
-	.OUTPUTS
-		[System.Int]
+<#
+.SYNOPSIS
+    Converts a PowerShell DateTime object to a Unix Epoch timestamp.
 
-		The Unix Epoch timestamp.
-	#>
+.DESCRIPTION
+    This cmdlet takes a PowerShell DateTime object and returns a Unix Epoch timestamp representing the same date/time. It supports input as a DateTime object, a string, or an integer.
+
+.PARAMETER DateTime
+    The PowerShell DateTime object, string, or integer to convert. This parameter is mandatory.
+
+.EXAMPLE
+    PS> ConvertTo-UnixEpoch -DateTime (Get-Date)
+
+    Converts the current date and time to a Unix Epoch timestamp.
+
+.EXAMPLE
+    PS> ConvertTo-UnixEpoch -DateTime "2023-01-01T00:00:00"
+
+    Converts the specified date and time string to a Unix Epoch timestamp.
+
+.EXAMPLE
+    PS> ConvertTo-UnixEpoch -DateTime 1672531200
+
+    Converts the specified Unix Epoch timestamp to a Unix Epoch timestamp (returns the same value).
+
+.INPUTS
+    System.Object. The DateTime parameter can be a DateTime object, string, or integer.
+
+.OUTPUTS
+    System.Int. The Unix Epoch timestamp.
+
+#>
 	[CmdletBinding()]
 	[OutputType([Int])]
 	param (

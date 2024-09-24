@@ -1,4 +1,26 @@
 function Get-x360RecoverDevice {
+<#
+.SYNOPSIS
+    Retrieves AutoVerify information for a specified device.
+
+.DESCRIPTION
+    This cmdlet retrieves AutoVerify information for a specified device from the x360Recover system. It sends a GET request to the x360Recover API and returns the AutoVerify details for the given device ID.
+
+.PARAMETER deviceId
+    The ID of the device to retrieve AutoVerify information for. This parameter is mandatory and can be piped.
+
+.EXAMPLE
+    PS> Get-x360RecoverDeviceAutoVerify -deviceId 12345
+
+    Retrieves AutoVerify information for the device with ID 12345.
+
+.INPUTS
+    System.Int64. The device ID can be piped to this cmdlet.
+
+.OUTPUTS
+    System.Object. The AutoVerify information retrieved from x360Recover.
+
+#>
 	[CmdletBinding( DefaultParameterSetName = 'Multi' )]
 	[OutputType([Object])]
 	[MetadataAttribute(

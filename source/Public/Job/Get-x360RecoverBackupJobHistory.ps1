@@ -1,4 +1,54 @@
 function Get-x360RecoverBackupJobHistory {
+<#
+.SYNOPSIS
+    Retrieves the backup job history for a specified client, device, and job.
+
+.DESCRIPTION
+    This cmdlet retrieves the backup job history for a specified client, device, and job from the x360Recover system. It supports pagination and filtering by start time.
+
+.PARAMETER clientId
+    The ID of the client to retrieve backup job history for. This parameter is mandatory.
+
+.PARAMETER deviceId
+    The ID of the device to retrieve backup job history for. This parameter is mandatory.
+
+.PARAMETER jobId
+    The ID of the job to retrieve backup job history for. This parameter is mandatory.
+
+.PARAMETER limit
+    The maximum number of records to return for pagination. This parameter is optional.
+
+.PARAMETER offset
+    The number of records to skip for pagination. This parameter is optional.
+
+.PARAMETER jobsAfterUnixEpoch
+    The minimum backup start time value as a Unix timestamp. This parameter is optional.
+
+.PARAMETER jobsAfter
+    The minimum backup start time value as a DateTime object. This parameter is optional.
+
+.EXAMPLE
+    PS> Get-x360RecoverBackupJobHistory -clientId 123 -deviceId 456 -jobId 789
+
+    Retrieves the backup job history for the specified client, device, and job.
+
+.EXAMPLE
+    PS> Get-x360RecoverBackupJobHistory -clientId 123 -deviceId 456 -jobId 789 -limit 10 -offset 20
+
+    Retrieves the backup job history for the specified client, device, and job with pagination.
+
+.EXAMPLE
+    PS> Get-x360RecoverBackupJobHistory -clientId 123 -deviceId 456 -jobId 789 -jobsAfter (Get-Date "2023-01-01")
+
+    Retrieves the backup job history for the specified client, device, and job starting after January 1, 2023.
+
+.INPUTS
+    System.Int32. The client ID, device ID, and job ID can be piped to this cmdlet.
+
+.OUTPUTS
+    System.Object. The backup job history information retrieved from x360Recover.
+
+#>
 	[CmdletBinding()]
 	[OutputType([Object])]
 	[MetadataAttribute(

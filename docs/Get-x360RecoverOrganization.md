@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-x360RecoverOrganization
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Retrieves organization information from x360Recover.
 
 ## SYNTAX
 
@@ -17,16 +17,14 @@ Get-x360RecoverOrganization [-ProgressAction <ActionPreference>] [<CommonParamet
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+This cmdlet retrieves organization information from x360Recover using a GET request.
 
 ## EXAMPLES
 
-### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
+### EXAMPLE 1
 ```
-
-{{ Add example description here }}
+Get-x360RecoverOrganization
+```
 
 ## PARAMETERS
 
@@ -50,12 +48,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-
 ## OUTPUTS
 
 ### System.Object
-
 ## NOTES
 
 ## RELATED LINKS
