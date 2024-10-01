@@ -33,3 +33,4 @@ PS > Get-x360RecoverOrganization
 | [Get-x360RecoverVault](./docs/Get-x360RecoverVault.md) | Retrieves information about x360Recover vaults. |
 | [Get-x360RecoverVaultConnThreshold](./docs/Get-x360RecoverVaultConnThreshold.md) | Retrieves the connectivity threshold information for a specified x360Recover vault. |
 | [Invoke-x360RecoverRequest](./docs/Invoke-x360RecoverRequest.md) | Sends an HTTP request to the specified URI using the specified method. |
+

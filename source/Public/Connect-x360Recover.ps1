@@ -126,6 +126,7 @@ function Connect-x360Recover {
 			UseSecretManagement = $UseSecretManagement
 			VaultName = $VaultName
 			WriteToSecretVault = $WriteToSecretVault
+			ReadFromSecretVault = $ReadFromSecretVault
 			SecretPrefix = $VaultEntryPrefix
 		}
 		Set-Variable -Name 'x360RConnectionInformation' -Value $ConnectionInformation -Visibility Private -Scope Script -Force

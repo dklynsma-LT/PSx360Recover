@@ -47,7 +47,7 @@ function New-x360RecoverGETRequest {
 		[Switch]$Raw
 	)
 	if ($null -eq $Script:x360RConnectionInformation) {
-		throw "Missing NinjaOne connection information, please run 'Connect-NinjaOne' first."
+		throw "Missing x360Recover connection information, please run 'Connect-x360Recover' first."
 	}
 	try {
 		if ($QSCollection) {
