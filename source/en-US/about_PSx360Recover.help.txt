@@ -24,7 +24,7 @@ TROUBLESHOOTING NOTE:
     Look out on the Github repository for issues and new releases.
 
 SEE ALSO
-    - {{ Please add Project URI such as github }}}
+    https://github.com/dklynsma-LT/PSx360Recover
 
 KEYWORDS
     Axcient, x360Recover, PowerShell, API, Backup, Automation, Client, Device

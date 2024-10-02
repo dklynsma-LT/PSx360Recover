@@ -107,13 +107,13 @@ PrivateData = @{
 		)
 
         # A URL to the license for this module.
-        LicenseUri = 'https://github.com/LinkTechSvcs/PSx360Recover/blob/main/LICENSE'
+        LicenseUri = 'https://github.com/dklynsma-LT/PSx360Recover/blob/main/LICENSE'
 
         # A URL to the main website for this project.
-        ProjectUri = 'https://github.com/LinkTechSvcs/PSx360Recover'
+        ProjectUri = 'https://github.com/dklynsma-LT/PSx360Recover'
 
         # A URL to an icon representing this module.
-        IconUri = 'https://github.com/LinkTechSvcs/PSx360Recover/blob/main/axcient-logo-85x85.png'
+        IconUri = 'https://github.com/dklynsma-LT/PSx360Recover/blob/main/axcient-logo-85x85.png'
 
         # ReleaseNotes of this module
         ReleaseNotes = ''

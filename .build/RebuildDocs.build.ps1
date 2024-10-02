@@ -7,7 +7,7 @@ task RebuildDocs {
 	try {
 		$startProcessParams = @{
 			FilePath = 'pwsh'
-			ArgumentList = ".\Dev\RebuildDocs.ps1"
+			ArgumentList = ".\.build\tasks\RebuildDocs.ps1"
 			RedirectStandardOutput = $stdOutTempFile
 			RedirectStandardError = $stdErrTempFile
 			PassThru = $true;
