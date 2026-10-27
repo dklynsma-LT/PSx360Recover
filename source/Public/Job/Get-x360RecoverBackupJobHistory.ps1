@@ -89,10 +89,11 @@ function Get-x360RecoverBackupJobHistory {
 		Write-verbose $MyInvocation
 		$Parameters = (Get-Command -Name $CommandName).Parameters
 		#if the datetime parameter is passed, convert it to unix epoch
-		if ($jobStartTime) {
+		if ($PSBoundParameters.ContainsKey('jobsAfter')) {
 			[Int64]$jobsAfterUnixEpoch = ConvertTo-UnixEpoch -DateTime $jobsAfter
-			$null = $Parameters.Remove('jobsAfter')
 		}
+		# jobsAfter isn't an API parameter - it's sent as starttime_begin via jobsAfterUnixEpoch.
+		$null = $Parameters.Remove('jobsAfter')
 		$QSCollection = New-x360RecoverQuery -CommandName $CommandName -Parameters $Parameters
 	}
 	process {

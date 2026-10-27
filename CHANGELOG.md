@@ -24,6 +24,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 - For any bug fix.
+- `Get-x360RecoverBackupJobHistory`: `-jobsAfter` is now sent to the API as `starttime_begin`. Previously it was sent as an unrecognized `jobsAfter` query parameter, so the date filter was ignored and the full job history was returned.
 
 ### Security
 
